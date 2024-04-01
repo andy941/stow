@@ -1,0 +1,308 @@
+# defaultSettings.yaml for latexindent.pl, version 3.13.4, 2021-12-22
+#                      a script that aims to
+#                      beautify .tex, .sty, .cls files
+#
+# (or latexindent.exe if you're on Windows)
+#
+#---------------------------------------------------------------------------------------
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# See http://www.gnu.org/licenses/.
+# 
+# Chris Hughes, 2017
+# 
+# For all communication, please visit: https://github.com/cmhughes/latexindent.pl
+#
+#---------------------------------------------------------------------------------------
+
+
+# if you want to add indentation after
+# a heading, such as \part, \chapter, etc
+# then populate it in here - you can add
+# an indent rule to indentRules if you would
+# like something other than defaultIndent
+#
+# you can also change the level if you like,
+# or add your own title command
+indentAfterHeadings:
+    part:
+       indentAfterThisHeading: 0
+       level: 1
+    chapter:
+       indentAfterThisHeading: 0
+       level: 2
+    section:
+       indentAfterThisHeading: 0
+       level: 3
+    subsection:
+       indentAfterThisHeading: 0
+       level: 4
+    subsection*:
+       indentAfterThisHeading: 0
+       level: 4
+    subsubsection:
+       indentAfterThisHeading: 0
+       level: 5
+    paragraph:
+       indentAfterThisHeading: 0
+       level: 6
+    subparagraph:
+       indentAfterThisHeading: 0
+       level: 7
+
+# if you have indent rules for particular code blocks
+# then you can populate them in indentRules; for example, you might just want
+# to use a space " " or maybe a double tab "\t\t"
+indentRules:
+   myenvironment: "  "
+   anotherenvironment: "  "
+   chapter: "  "
+   section: "  "
+   item: "  "
+   myitem: "  "
+
+# set indentRules globally for codeblocks; these need
+# to be horizontal spaces, if they are to be used
+indentRulesGlobal:
+    environments: 0
+    commands: 0
+    optionalArguments: 0
+    mandatoryArguments: 0
+    ifElseFi: 0
+    items: 0
+    keyEqualsValuesBracesBrackets: 0
+    namedGroupingBracesBrackets: 0
+    UnNamedGroupingBracesBrackets: 0
+    specialBeginEnd: 0
+    afterHeading: 0
+    filecontents: 0
+
+# modifyLineBreaks will only be searched if the -m
+# switch is active
+#
+# poly-switch examples:
+#
+#    BeginStartsOnOwnLine:
+#       modify line breaks before a begin statement
+#
+#       when set to -1, e.g
+#               some text some text
+#               \begin{myenvironment}
+#           will be changed to
+#               some text some text \begin{myenvironment}
+#       when set to 0, the switch is ignored
+#       when set to 1, e.g
+#               some text some text \begin{myenvironment}
+#           will be changed to
+#               some text some text
+#               \begin{myenvironment}
+#       when set to 2, e.g
+#               some text some text \begin{myenvironment}
+#           will be changed to
+#               some text some text%
+#               \begin{myenvironment}
+#       when set to 3, e.g
+#               some text some text \begin{myenvironment}
+#           will be changed to
+#               some text some text
+#
+#               \begin{myenvironment}
+#
+#    BodyStartsOnOwnLine:
+#       modify line breaks before the beginning of the body
+#
+#       when set to -1, e.g
+#               \begin{myenv}
+#                   body text body text
+#           will be changed to
+#               \begin{myenv}body text body text
+#       when set to 0, the switch is ignored
+#       when set to 1, e.g
+#               \begin{myenv}body text body text
+#           will be changed to
+#               \begin{myenv}
+#                   body text body text
+#       when set to 2, e.g
+#               \begin{myenv}body text body text
+#           will be changed to
+#               \begin{myenv}%
+#                   body text body text
+#       when set to 3, e.g
+#               \begin{myenv}body text body text
+#           will be changed to
+#               \begin{myenv}
+#
+#                   body text body text
+#
+#    EndStartsOnOwnLine:
+#       modify line breaks before the end statement
+#
+#       when set to -1, e.g
+#               some text some text
+#               \end{myenvironment}
+#           will be changed to
+#               some text some text \end{myenvironment}
+#       when set to 0, the switch is ignored
+#       when set to 1, e.g
+#               some text some text \end{myenvironment}
+#           will be changed to
+#               some text some text
+#               \end{myenvironment}
+#       when set to 2, e.g
+#               some text some text \end{myenvironment}
+#           will be changed to
+#               some text some text%
+#               \end{myenvironment}
+#       when set to 3, e.g
+#               some text some text \end{myenvironment}
+#           will be changed to
+#               some text some text
+#
+#               \end{myenvironment}
+#
+#    EndFinishesWithLineBreak:
+#       modify line breaks after the end statement
+#
+#       when set to -1, e.g
+#               \end{myenvironment}
+#               some text some text
+#           will be changed to
+#                   \end{myenvironment}some text some text
+#       when set to 0, the switch is ignored
+#       when set to 1, e.g
+#               \end{myenvironment}some text some text
+#           will be changed to
+#                   \end{myenvironment}
+#                   some text some text
+#       when set to 2, e.g
+#               \end{myenvironment}some text some text
+#           will be changed to
+#                   \end{myenvironment}%
+#                   some text some text
+#       when set to 3, e.g
+#               \end{myenvironment}some text some text
+#           will be changed to
+#                   \end{myenvironment}
+#
+#                   some text some text
+#
+# you can specify settings on a per-name basis
+modifyLineBreaks:
+    preserveBlankLines: 1
+    condenseMultipleBlankLinesInto: 1
+    oneSentencePerLine:
+        manipulateSentences: 0
+        removeSentenceLineBreaks: 1
+        textWrapSentences: 0   # setting to 1 disables main textWrap routine
+        sentenceIndent: ""
+        sentencesFollow:
+            par: 1
+            blankLine: 1
+            fullStop: 1
+            exclamationMark: 1
+            questionMark: 1
+            rightBrace: 1
+            commentOnPreviousLine: 1
+            other: 0
+        sentencesBeginWith:
+            A-Z: 1
+            a-z: 1
+            other: 0
+        sentencesEndWith:
+            basicFullStop: 0
+            betterFullStop: 1
+            exclamationMark: 1
+            questionMark: 1
+            other: 0
+    textWrapOptions:
+        columns: 79
+        multipleSpacesToSingle: 1            
+        blocksFollow:
+           headings: 1
+           commentOnPreviousLine: 1
+           par: 1
+           blankLine: 1
+           verbatim: 1
+           filecontents: 1
+           other: '\\\]|\\item(?:\h|\[)|\\caption{'      # regex
+        blocksBeginWith:
+           A-Z: 1
+           a-z: 1
+           0-9: 0
+           other: '\\text[a-z]*?\{.*\}'
+        blocksEndBefore:
+           commentOnOwnLine: 1
+           verbatim: 1
+           filecontents: 1
+           other: '\\begin\{|\\\[|\\end\{'    # regex
+        huge: overflow                        # forbid mid-word line breaks
+        separator: ""
+    # poly-switches below here
+    environments:
+        BeginStartsOnOwnLine: 0
+        BodyStartsOnOwnLine: 0
+        EndStartsOnOwnLine: 0
+        EndFinishesWithLineBreak: 0
+        equation*:
+            BeginStartsOnOwnLine: 0
+            BodyStartsOnOwnLine: 0
+            EndStartsOnOwnLine: 0
+            EndFinishesWithLineBreak: 0
+    ifElseFi:
+        IfStartsOnOwnLine: 0
+        BodyStartsOnOwnLine: 0
+        OrStartsOnOwnLine: 0
+        OrFinishesWithLineBreak: 0
+        ElseStartsOnOwnLine: 0
+        ElseFinishesWithLineBreak: 0
+        FiStartsOnOwnLine: 0
+        FiFinishesWithLineBreak: 0
+        ifnum:
+            IfStartsOnOwnLine: 0
+            BodyStartsOnOwnLine: 0
+            OrStartsOnOwnLine: 0
+            OrFinishesWithLineBreak: 0
+            ElseStartsOnOwnLine: 0
+            ElseFinishesWithLineBreak: 0
+            FiStartsOnOwnLine: 0
+            FiFinishesWithLineBreak: 0
+    commands:
+        CommandStartsOnOwnLine: 0
+        CommandNameFinishesWithLineBreak: 0
+    optionalArguments:
+        LSqBStartsOnOwnLine: 0
+        OptArgBodyStartsOnOwnLine: 0
+        RSqBStartsOnOwnLine: 0
+        RSqBFinishesWithLineBreak: 0
+    mandatoryArguments:
+        LCuBStartsOnOwnLine: 0
+        MandArgBodyStartsOnOwnLine: 0
+        RCuBStartsOnOwnLine: 0
+        RCuBFinishesWithLineBreak: 0
+    keyEqualsValuesBracesBrackets:
+        KeyStartsOnOwnLine: 0
+        EqualsStartsOnOwnLine: 0
+        EqualsFinishesWithLineBreak: 0
+    items:
+        ItemStartsOnOwnLine: 1
+        ItemFinishesWithLineBreak: 1
+    namedGroupingBracesBrackets:
+        NameStartsOnOwnLine: 0
+        NameFinishesWithLineBreak: 0
+    specialBeginEnd:
+        SpecialBeginStartsOnOwnLine: 0
+        SpecialBodyStartsOnOwnLine: 0
+        SpecialEndStartsOnOwnLine: 0
+        SpecialEndFinishesWithLineBreak: 0
+    verbatim:
+        VerbatimBeginStartsOnOwnLine: 0
+        VerbatimEndFinishesWithLineBreak: 0
+
