@@ -450,7 +450,7 @@ client.background        $bg
 #############################
 
 # Set inner/outer gaps
-gaps inner 7
+gaps inner 10
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -516,7 +516,7 @@ exec_always sleep 3; /home/andrea/.opam/default/bin/google-drive-ocamlfuse ~/Dri
 
 
 # split windows on the short edge, github page --> https://github.com/olemartinorg/i3-alternating-layout
-exec_always --no-startup-id python ~/.i3/alternating_layouts.py
+exec_always --no-startup-id alternating_layouts.py
 
 # Passmenu keybinding
 bindsym $mod+p exec rofi-pass
