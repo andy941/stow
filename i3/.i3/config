@@ -430,7 +430,6 @@ exec_always --no-startup-id fix_xcursor
 #############
 #### BAR ####
 #############
-exec_always --no-startup-id $HOME/.i3/SecondScreen.sh
 
 #######################
 #### i3 appearance ####
