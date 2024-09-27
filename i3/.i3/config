@@ -78,7 +78,7 @@ set $sel_bg    #F5E0DC
 
 #___________________________________________________________________________________________________
 # handle a second screen
-exec_always --no-startup-id bash /home/andrea/.i3/SecondScreen.sh 3840x2160
+exec_always --no-startup-id bash /home/andrea/.i3/SecondScreen.sh 1920x1080
 
 # move focused workspace between monitors
 bindsym $mod+Shift+greater move workspace to output right

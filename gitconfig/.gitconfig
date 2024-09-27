@@ -1,0 +1,16 @@
+[user]
+	email = finocchio.andrea94@gmail.com
+	name = andy941
+[credential]
+	helper = cache --timeout=36000000
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = master
+[pull]
+	rebase = false
+[push]
+  autoSetupRemote = true
