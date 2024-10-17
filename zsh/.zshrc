@@ -54,7 +54,7 @@ if [ -x "$(command -v colorls)" ]; then
 fi
 
 # File browser Yazi, when closing it changes directory (use `Q` if don't want to)
-function yy() {
+function ff() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
