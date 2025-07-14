@@ -1,0 +1,15 @@
+
+[manager]
+sort_by = "alphabetical"
+sort_dir_first = true
+linemode = "size"
+
+[opener]
+play = [
+	{ run = 'vlc "$@"', orphan = true },
+]
+
+[open]
+prepend_rules = [
+	{ name = "*.mkv", use = "play" },
+]
