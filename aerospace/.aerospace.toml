@@ -64,7 +64,7 @@ inner.horizontal = 15
 inner.vertical =   15
 outer.left =       15
 outer.bottom =     15
-outer.top =        0
+outer.top =        15
 outer.right =      15
 
 # 'main' binding mode declaration
@@ -128,13 +128,15 @@ cmd-enter = 'exec-and-forget open -na Kitty'
 
 cmd-b = 'exec-and-forget open -na /Applications/Google\ Chrome.app'
 
-cmd-f = 'fullscreen --no-outer-gaps'
+cmd-shift-f = 'fullscreen --no-outer-gaps'
 
-cmd-c = [
-  'reload-config',
-  'exec-and-forget borders active_color=0xffcba6f7 inactive_color=0x00494d64 width=12.0 hidpi=on',
-  'mode main'
-]
+# cmd-shift-space = 'layout floating tiling'
+
+# cmd- = [
+#   'reload-config',
+#   'exec-and-forget borders active_color=0xffcba6f7 inactive_color=0x00494d64 width=12.0 hidpi=on',
+#   'mode main'
+# ]
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 cmd-r = 'mode resize'      # 1. Define a binding to switch to 'resize' mode
