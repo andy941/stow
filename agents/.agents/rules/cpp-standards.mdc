@@ -1,0 +1,41 @@
+---
+description: C++ coding standards and conventions
+globs: "**/*.{cpp,h,hpp,cc,cxx}"
+alwaysApply: false
+---
+
+# C++ Standards
+
+## Resource management
+
+- Follow RAII principles
+- Avoid using raw pointers whenever possible
+- Avoid throwing exceptions — adjust the design or use optionals
+- Use `std::vector<uint8_t>` when you need to dynamically allocate bytes
+
+## Types and sizing
+
+- Prefer `size_t` or `ssize_t` unless a specific size is needed
+  - Use `size_t` in for loops especially, unless another type is strictly better (e.g. it would have to be cast anyway)
+  - When a specific size is needed, use the most explicit type (e.g. `uint64_t`)
+  - default to size_t for loop indexes unless you have valid reasons to use another index type. 
+- Prefer STD algorithms and structures.
+  - Prefer to use named lambdas + STD algortihms over cycles
+- Carefully evaluate what type to use and use casting only if absolutely necessary.
+- Prefer `string_view` over `const std::string&`.
+
+## Initialization and declarations
+
+- Prefer `auto foo = Foo{...}` style initialization
+  - Always qualify `auto` (e.g. `const auto`, `auto*`, `auto&`)
+- Use anonymous namespaces instead of `static` for free functions local to a single compilation unit
+- Use `#pragma once` in headers
+
+## Naming
+
+- Member variables: `m_<name>`
+- Constants: `UPPER_SNAKE_CASE`
+
+## Headers
+
+- Keep only the minimal public headers in each module's `public/` directory to avoid polluting builds

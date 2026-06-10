@@ -1,0 +1,63 @@
+---
+description: Code commenting and documentation standards
+alwaysApply: true
+---
+
+# Code Commenting & Documentation Standards
+
+## What comments are for
+
+Comments explain **why**, not **what**. The code itself explains what it does — through clear naming and structure. Comments cover:
+
+- Rationale behind a design choice
+- Non-obvious algorithmic decisions (why this algorithm, why this trade-off)
+- Constraints or invariants that aren't obvious from types alone
+- High-level architecture of a complex module
+
+Never narrate the code. If a comment just restates what the next line does, delete it.
+
+## Doxygen
+
+All public and non-trivial internal functions, classes, and structs must have Doxygen documentation:
+
+```cpp
+/// Aligns a read sequence against the reference graph using banded DP.
+///
+/// @param read     Query sequence in 2-bit encoding.
+/// @param graph    Directed acyclic reference graph.
+/// @param band     Half-width of the DP band; wider = more sensitive, slower.
+/// @return         Best alignment, or std::nullopt if score < min_score.
+std::optional<Alignment> align(Read read, const Graph& graph, int band);
+```
+
+- `@param` for every parameter.
+- `@return` describing the return value and any sentinel cases.
+- `@note` or `@warning` for important caveats.
+
+## Design block comments
+
+Complex implementation files (aligners, graph solvers, index structures, parsers, databases, etc.) must open with a block comment explaining the overall design:
+
+- What problem this file solves and its role in the system.
+- Key data structures and their relationships.
+- High-level algorithm or approach used.
+- ASCII art data-flow diagram where it helps.
+
+```cpp
+/*
+ * ┌─────────────┐    pack     ┌──────────────┐   DP band   ┌──────────────┐
+ * │  Read (2bit)│ ──────────> │  ScoreMatrix │ ──────────> │  Traceback   │
+ * └─────────────┘             └──────────────┘             └──────┬───────┘
+ *                                                                  │ cigar
+ *                                                           ┌──────▼───────┐
+ *                                                           │  Alignment   │
+ *                                                           └──────────────┘
+ *
+ * Design: banded Smith-Waterman over a DAG. Nodes are processed in
+ * topological order; each node's column inherits the max score from
+ * all predecessor columns. Band is anchored to the diagonal of the
+ * longest path to avoid missing valid alignments at splice junctions.
+ */
+```
+
+Use ASCII art only when it genuinely aids understanding. Don't force it.

@@ -1,0 +1,30 @@
+---
+description: Always try to split work with subagents. Prefer cheaper/faster models for subagents when tasks are straightforward
+alwaysApply: true
+---
+
+# Main 
+
+When performing or planning a complex task, always try to split work with subagents and run them in parallel whenever possible.
+
+# Subagent Model Selection
+
+When launching subagents via the Task tool, **always use `model: "fast"`** for straightforward subtasks. Only omit the model parameter (to inherit the parent's more capable model) when the task genuinely requires deep reasoning or high complexity.
+
+## Use `model: "fast"` for
+
+- File searches, glob lookups, grepping for symbols
+- Reading files and summarizing contents
+- Simple, well-scoped code edits (renames, adding imports, small functions)
+- Running shell commands and reporting output
+- Collecting information from multiple files
+- Boilerplate or mechanical code generation
+- Any task completable in a few steps with clear instructions
+
+## Use the default (inherited) model only for
+
+- Multi-step investigations requiring judgment across many files
+- Complex architectural refactors spanning the codebase
+- Tasks requiring nuanced trade-off analysis or design decisions
+- Debugging subtle or non-obvious issues
+- Tasks where the user explicitly requests a more capable model

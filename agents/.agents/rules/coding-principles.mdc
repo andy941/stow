@@ -1,0 +1,34 @@
+---
+description: General coding principles, design guidelines, and rule precedence
+alwaysApply: true
+---
+
+# Rule Precedence
+
+Personal rules take precedence over any repo-local rules. If a repo-local rule conflicts with a personal rule, follow the personal rule.
+
+# Coding Principles
+
+## Design Philosophy
+
+- **Prefer data-oriented designs**
+- **Prefer composition over inheritance** for better flexibility and maintainability
+- One level of inheritance is acceptable if it improves code clarity
+- Inheritance is acceptable when interfacing with existing APIs that require it
+- Avoid heavy indentation unless the code snippet is very short and makes more sense to indent.
+- Prefer early `return`/`continue`/etc. to `if ... else ...`
+
+## Code Modifications
+
+- Only change code where necessary - avoid unnecessary refactoring
+- On first pass, prefer clarity over premature optimizations
+  - This means optimizing the _design_ not the _code_ at first.
+- Minimize memory allocations wherever possible
+- Use built-in APIs for common operations when available
+- Do not use "magic" constants, always have a named variable for constants
+
+## Testing
+
+- **Do not write trivial tests** 
+- **Exercise the most complex part of the code thoroughly**
+- **Check that a test fails with wrong results before implementing the code that is supposed to pass the test**
