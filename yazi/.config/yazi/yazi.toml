@@ -11,5 +11,5 @@ play = [
 
 [open]
 prepend_rules = [
-	{ name = "*.mkv", use = "play" },
+	{ mime = "video/*", use = "play" },
 ]
